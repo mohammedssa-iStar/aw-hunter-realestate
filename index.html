@@ -1,750 +1,676 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;A W Hunter | Abu Dhabi Luxury Properties&lt;/title&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Tailwind CSS --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Font Awesome for Icons --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Google Fonts: Inter --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Custom styles to complement Tailwind */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.category-scroll::-webkit-scrollbar { height: 4px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.category-scroll::-webkit-scrollbar-track { background: #f1f1f1; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.category-scroll::-webkit-scrollbar-thumb { background: #888; border-radius: 2px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.category-scroll::-webkit-scrollbar-thumb:hover { background: #555; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.slider-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(255, 255, 255, 0.8);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 10;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.property-card:hover .slider-btn { display: flex; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.slider-btn.left-arrow { left: 0.5rem; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.slider-btn.right-arrow { right: 0.5rem; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>#secondary-filters-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>#secondary-filters-container.active { max-height: 100px; opacity: 1; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.loader {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid #f3f3f3;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-top: 4px solid #db2777;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: spin 1s linear infinite;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes spin {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: rotate(0deg); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: rotate(360deg); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.progress-bar-fill { transition: width 0.3s ease-in-out; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.drop-zone {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 2px dashed #ccc;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.2s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.drop-zone:hover { background-color: #f9fafb; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.preview-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.preview-item img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-gray-50 text-gray-800"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="bg-white border-b sticky top-0 z-30"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4 sm:px-6 lg:px-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center justify-between h-20"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Logo --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="flex items-center space-x-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg class="h-8 w-8 text-rose-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5-1.5-.545m0 0l-9 3.273m0 0l-9-3.273m12.75 0l-1.5-.545M12 12l-1.5.545m0 0l-3-1.091m0 0l-6 2.182" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-2xl font-bold text-rose-500 hidden md:block"&gt;A W Hunter&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Search Bar --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hidden sm:flex items-center border rounded-full shadow-sm hover:shadow-md transition-shadow duration-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="px-4 py-2 font-semibold border-r"&gt;Abu Dhabi&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="px-4 py-2 font-semibold border-r"&gt;Any type&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="px-4 py-2 text-gray-500"&gt;Add features&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="bg-rose-500 text-white rounded-full p-2 mx-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fas fa-search"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- User Actions --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center space-x-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="add-development-btn" onclick="openDevelopmentModal()" class="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-gray-100 transition text-sm text-green-600"&gt;Add Development&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="admin-quick-add-btn" onclick="openAdminModal()" class="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-gray-100 transition text-sm text-blue-600"&gt;Admin Quick Add&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="openListPropertyModal()" class="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-gray-100 transition"&gt;List Your Property&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="flex items-center space-x-2 border rounded-full p-2 hover:shadow-md transition-shadow"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fas fa-bars"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fas fa-user-circle text-gray-500 text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Primary Category Filters --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 border-t"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="primary-filters" class="flex items-center space-x-6 overflow-x-auto category-scroll pb-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="all"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-infinity text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;All Properties&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="development"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-city text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Developments&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="villa"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-home text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Villas&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="townhouse"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-house-user text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Townhouses&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="penthouse"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                     </span>&lt;i class="fas fa-building text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Penthouses&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="apartment"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="far fa-building text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Apartments&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="waterfront"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-water text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Waterfront&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="mansion"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-chess-rook text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs font-semibold"&gt;Mansions&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Secondary Feature Filters (Initially Hidden) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="secondary-filters-container" class="container mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="secondary-filters" class="flex items-center space-x-4 overflow-x-auto category-scroll pb-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Feature buttons will be injected here by JS --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- MODALS SECTION --&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- List Your Property Modal (Multi-Step) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="list-property-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-white rounded-lg shadow-xl p-8 max-w-3xl w-full relative max-h-[90vh] overflow-y-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="closeListPropertyModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"&gt;&amp;times;&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mb-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full bg-gray-200 rounded-full h-2.5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="progress-bar" class="bg-rose-500 h-2.5 rounded-full progress-bar-fill" style="width: 20%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Steps --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="form-step-1" class="form-step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-bold mb-2"&gt;Step 1: Basic Information&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="prop-title" class="block text-sm font-medium text-gray-700"&gt;Property Name&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="prop-title" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., The Signature Villa"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="prop-type" class="block text-sm font-medium text-gray-700"&gt;Property Type&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="prop-type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Villa&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Townhouse&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Penthouse&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Apartment&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Waterfront&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Mansion&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="prop-location-select" class="block text-sm font-medium text-gray-700"&gt;Location&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="prop-location-select" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Saadiyat Island, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Yas Island, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Al Reem Island, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Khalifa City, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Al Raha Beach, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="form-step-2" class="form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h2 class="text-2xl font-bold mb-2"&gt;Step 2: Property Details&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="prop-price" class="block text-sm font-medium text-gray-700"&gt;Price (AED)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="prop-price" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., 25000000"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="prop-features" class="block text-sm font-medium text-gray-700"&gt;Key Features (comma-separated)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="prop-features" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Private pool, sea view, home cinema, smart home"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="form-step-3" class="form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h2 class="text-2xl font-bold mb-2"&gt;Step 3: Description&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="prop-description" class="block text-sm font-medium text-gray-700"&gt;Property Description&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="generate-desc-btn" onclick="generateDescription()" class="text-sm bg-rose-100 text-rose-600 font-semibold py-1 px-3 rounded-full hover:bg-rose-200 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Generate with AI ✨</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;textarea id="prop-description" rows="8" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Describe the unique aspects of your property..."&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="desc-loader" class="hidden justify-center items-center py-4"&gt;&lt;div class="loader"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="form-step-4" class="form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-bold mb-2"&gt;Step 4: Photos &amp; Videos&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-gray-600 mb-6"&gt;A picture is worth a thousand words. Upload high-quality media.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Main Photos&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="photo-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-camera text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="photo-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Living Room&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="living-room-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-couch text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="living-room-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Kitchen&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="kitchen-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-utensils text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="kitchen-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Bedrooms&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="bedrooms-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-bed text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="bedrooms-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Bathrooms&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="bathrooms-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-bath text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="bathrooms-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Outdoor Spaces&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="outdoor-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-tree text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="outdoor-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                         </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Floor Plan&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="layout-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-map-marked-alt text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="layout-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="video-link" class="block text-sm font-medium text-gray-700 mb-2"&gt;Video Tour Link&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                             </span>&lt;div class="relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;i class="fab fa-youtube absolute left-3 top-1/2 -translate-y-1/2 text-red-500"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;input type="url" id="video-link" class="pl-9 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="https://youtube.com/watch?v=..."&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="form-step-5" class="form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h2 class="text-2xl font-bold mb-2"&gt;Step 5: Start Your Free Trial!&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>&lt;div class="text-center p-8 bg-gray-100 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-check-circle text-5xl text-green-500 mb-4"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold"&gt;Listing Complete!&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-500 mt-2"&gt;After your 7-day trial, you'll be prompted to subscribe to keep your listing active.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Navigation --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between mt-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="prev-btn" onclick="changeStep(-1)" class="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition hidden"&gt;Back&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="next-btn" onclick="changeStep(1)" class="bg-rose-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-rose-600 transition"&gt;Next&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="finish-btn" onclick="finishListing()" class="bg-green-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-600 transition hidden"&gt;Start Free Trial&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Admin Quick Add Modal --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-white rounded-lg shadow-xl p-8 max-w-3xl w-full relative max-h-[90vh] overflow-y-auto"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"&gt;&amp;times;&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-bold mb-2"&gt;Admin: Add New Property&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="admin-development-context" class="hidden text-sm text-gray-500 mb-4 p-2 bg-blue-50 rounded-md"&gt;&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="my-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full bg-gray-200 rounded-full h-2.5"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="admin-progress-bar" class="bg-blue-500 h-2.5 rounded-full progress-bar-fill" style="width: 20%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Admin Steps --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="admin-form-step-1" class="admin-form-step"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h3 class="text-xl font-semibold mb-2"&gt;Step 1: Basic Information&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="admin-prop-title" class="block text-sm font-medium text-gray-700"&gt;Property Name&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="admin-prop-title" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., The Royal Penthouse"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="admin-prop-type" class="block text-sm font-medium text-gray-700"&gt;Property Type&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="admin-prop-type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Villa&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Townhouse&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Penthouse&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Apartment&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Waterfront&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Mansion&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Commercial&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="admin-prop-location" class="block text-sm font-medium text-gray-700"&gt;Location&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="admin-prop-location" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Saadiyat Island, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Yas Island, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Al Reem Island, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Khalifa City, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option&gt;Al Raha Beach, Abu Dhabi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="admin-form-step-2" class="admin-form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-semibold mb-2"&gt;Step 2: Property Details&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="admin-prop-price" class="block text-sm font-medium text-gray-700"&gt;Price (AED)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="admin-prop-price" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., 25000000"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="admin-prop-features" class="block text-sm font-medium text-gray-700"&gt;Key Features (comma-separated)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="admin-prop-features" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Private pool, sea view, smart home"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="admin-form-step-3" class="admin-form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-semibold mb-2"&gt;Step 3: Description&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="admin-prop-description" class="block text-sm font-medium text-gray-700"&gt;Property Description&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="admin-generate-desc-btn" onclick="adminGenerateDescription()" class="text-sm bg-blue-100 text-blue-600 font-semibold py-1 px-3 rounded-full hover:bg-blue-200 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Generate with AI ✨</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;textarea id="admin-prop-description" rows="8" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Describe the unique aspects of the property..."&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="admin-desc-loader" class="hidden justify-center items-center py-4"&gt;&lt;div class="loader" style="border-top-color: #3b82f6;"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="admin-form-step-4" class="admin-form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-semibold mb-2"&gt;Step 4: Photos &amp; Videos&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Main Photos&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="admin-photo-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-camera text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="admin-photo-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label class="block text-sm font-medium text-gray-700 mb-2"&gt;Floor Plan&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="admin-layout-drop-zone" class="drop-zone"&gt;&lt;i class="fas fa-map-marked-alt text-2xl text-gray-400 mb-2"&gt;&lt;/i&gt;&lt;p&gt;Click to upload&lt;/p&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="admin-layout-previews" class="preview-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="admin-video-link" class="block text-sm font-medium text-gray-700 mb-2"&gt;Video Tour Link&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                         </span>&lt;div class="relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;i class="fab fa-youtube absolute left-3 top-1/2 -translate-y-1/2 text-red-500"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="url" id="admin-video-link" class="pl-9 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="https://youtube.com/watch?v=..."&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="admin-form-step-5" class="admin-form-step hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-semibold mb-2"&gt;Step 5: Confirmation&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="text-center p-8 bg-gray-100 rounded-lg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-clipboard-check text-5xl text-blue-500 mb-4"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold"&gt;Ready to Add&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-500 mt-2"&gt;Review the details and click below to add the property directly to the live site.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Admin Navigation --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between mt-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="admin-prev-btn" onclick="adminChangeStep(-1)" class="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition hidden"&gt;Back&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="admin-next-btn" onclick="adminChangeStep(1)" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600 transition"&gt;Next&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="admin-finish-btn" onclick="adminFinishListing()" class="bg-green-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-600 transition hidden"&gt;Add Property to Listing&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Development Modal --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="development-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- ... unchanged ... --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">     </span>&lt;main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="property-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Property cards will be rendered here --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- DATA (Simulating a database) ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let developments = [</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 1, name: 'Saadiyat Grove' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 2, name: 'Yas Acres North' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 3, name: 'Ramhan Island Villas' }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>let properties = [</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 1, title: 'Saadiyat Beach Signature Villa', location: 'Saadiyat Island, Abu Dhabi', price: '25,000,000', rating: 4.98, category: 'villa', development: 'Saadiyat Grove', images: ['https://placehold.co/600x338/A8D5BA/333333?text=Villa+View', 'https://placehold.co/600x338/BFD8B8/333333?text=Pool'], features: ['private_pool', 'sea_view', 'maids_room'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 2, title: 'Skyline Penthouse, The Gate Tower', location: 'Al Reem Island, Abu Dhabi', price: '18,500,000', rating: 4.95, category: 'penthouse', development: null, images: ['https://placehold.co/600x338/81C7D4/FFFFFF?text=Penthouse+View'], features: ['sea_view', 'smart_home', 'gym'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 3, title: 'Yas Acres Waterfront Villa', location: 'Yas Island, Abu Dhabi', price: '9,800,000', rating: 4.88, category: 'waterfront', development: 'Yas Acres North', images: ['https://placehold.co/600x338/FFDDC1/333333?text=Waterfront+Property'], features: ['private_pool', 'sea_view', 'gym'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 4, title: 'Grove Museum Views Apartments', location: 'Saadiyat Island, Abu Dhabi', price: '7,200,000', rating: 4.92, category: 'apartment', development: 'Saadiyat Grove', images: ['https://placehold.co/600x338/C1A87C/FFFFFF?text=Apartment+Balcony'], features: ['sea_view', 'gym'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 7, title: 'Leafy Lane Townhouse', location: 'Yas Island, Abu Dhabi', price: '4,500,000', rating: 4.80, category: 'townhouse', development: 'Yas Acres North', images: ['https://placehold.co/600x338/fca5a5/FFFFFF?text=Townhouse+Exterior'], features: ['gym', 'private_pool'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 8, title: 'Zenith Tower Residence', location: 'Al Reem Island, Abu Dhabi', price: '2,100,000', rating: 4.75, category: 'apartment', development: null, images: ['https://placehold.co/600x338/a5b4fc/FFFFFF?text=Modern+Apartment'], features: ['gym'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 9, title: 'Exclusive Ramhan Island Villa', location: 'Saadiyat Island, Abu Dhabi', price: '35,000,000', rating: 5.0, category: 'villa', development: 'Ramhan Island Villas', images: ['https://placehold.co/600x338/6ee7b7/333333?text=Ramhan+Island'], features: ['private_pool', 'sea_view', 'smart_home'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 10, title: 'Saadiyat Cultural District Townhouse', location: 'Saadiyat Island, Abu Dhabi', price: '6,800,000', rating: 4.91, category: 'townhouse', development: 'Saadiyat Grove', images: ['https://placehold.co/600x338/fde68a/333333?text=Cultural+Townhouse'], features: ['maids_room', 'gym'] },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ id: 11, title: 'Premium Office Space', location: 'Al Maryah Island, Abu Dhabi', price: '12,500,000', rating: 4.95, category: 'commercial', development: null, images: ['https://placehold.co/600x338/d1d5db/333333?text=Office+Space'], features: ['sea_view'] },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>];</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const featureDetails = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'private_pool': { icon: 'fas fa-swimming-pool', name: 'Private Pool' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'sea_view': { icon: 'fas fa-water', name: 'Sea View' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'maids_room': { icon: 'fas fa-concierge-bell', name: `Maid's Room` },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'smart_home': { icon: 'fas fa-robot', name: 'Smart Home' },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>'gym': { icon: 'fas fa-dumbbell', name: 'Gym' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- State ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let userFormCurrentStep = 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let adminFormCurrentStep = 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let activePrimaryFilter = 'all';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let activeSecondaryFilter = 'all';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let adminAddingToDevelopment = null;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const apiKey = "";<span class="Apple-converted-space"> </span></p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- DOM Elements ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const propertyGrid = document.getElementById('property-grid');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const primaryCategoryButtons = document.querySelectorAll('#primary-filters button');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const secondaryFiltersContainer = document.getElementById('secondary-filters-container');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const secondaryFiltersDiv = document.getElementById('secondary-filters');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const listPropertyModal = document.getElementById('list-property-modal');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const adminModal = document.getElementById('admin-modal');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const developmentModal = document.getElementById('development-modal');</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- MODAL &amp; FORM LOGIC ---</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// User Listing Form</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.openListPropertyModal = () =&gt; { userFormCurrentStep = 1; updateUserFormStep(); listPropertyModal.classList.remove('hidden'); listPropertyModal.classList.add('flex'); };</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.closeListPropertyModal = () =&gt; listPropertyModal.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function updateUserFormStep() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.form-step').forEach(step =&gt; step.classList.add('hidden'));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(`form-step-${userFormCurrentStep}`).classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('progress-bar').style.width = `${(userFormCurrentStep / 5) * 100}%`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('prev-btn').classList.toggle('hidden', userFormCurrentStep === 1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('next-btn').classList.toggle('hidden', userFormCurrentStep === 5);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('finish-btn').classList.toggle('hidden', userFormCurrentStep !== 5);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.changeStep = (direction) =&gt; { userFormCurrentStep += direction; updateUserFormStep(); };</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.finishListing = () =&gt; {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const newProperty = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>id: properties.length + 1,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>title: document.getElementById('prop-title').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>location: document.getElementById('prop-location-select').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>price: document.getElementById('prop-price').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>rating: 'New',</p>
-<p class="p1"><span class="Apple-converted-space">                </span>category: document.getElementById('prop-type').value.toLowerCase(),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>images: ['https://placehold.co/600x338/cccccc/333333?text=New+Listing'],</p>
-<p class="p1"><span class="Apple-converted-space">                </span>features: document.getElementById('prop-features').value.split(',').map(f =&gt; f.trim().toLowerCase().replace(/\s+/g, '_'))</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p1"><span class="Apple-converted-space">            </span>properties.push(newProperty);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderProperties();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>listPropertyModal.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>alert('Congratulations! Your property is now live for a 7-day trial.');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Admin Property Form</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.openAdminModal = (developmentContext = null) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>adminFormCurrentStep = 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>adminAddingToDevelopment = developmentContext;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const contextDiv = document.getElementById('admin-development-context');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (developmentContext) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>contextDiv.textContent = `Adding property to: ${developmentContext}`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>contextDiv.classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>contextDiv.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>updateAdminFormStep();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>adminModal.classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>adminModal.classList.add('flex');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.closeAdminModal = () =&gt; adminModal.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function updateAdminFormStep() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.admin-form-step').forEach(step =&gt; step.classList.add('hidden'));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(`admin-form-step-${adminFormCurrentStep}`).classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('admin-progress-bar').style.width = `${(adminFormCurrentStep / 5) * 100}%`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('admin-prev-btn').classList.toggle('hidden', adminFormCurrentStep === 1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('admin-next-btn').classList.toggle('hidden', adminFormCurrentStep === 5);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('admin-finish-btn').classList.toggle('hidden', adminFormCurrentStep !== 5);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.adminChangeStep = (direction) =&gt; { adminFormCurrentStep += direction; updateAdminFormStep(); };</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.adminFinishListing = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">             </span>const newProperty = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>id: properties.length + 1,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>title: document.getElementById('admin-prop-title').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>location: document.getElementById('admin-prop-location').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>price: document.getElementById('admin-prop-price').value,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>rating: 'Admin',</p>
-<p class="p1"><span class="Apple-converted-space">                </span>category: document.getElementById('admin-prop-type').value.toLowerCase(),</p>
-<p class="p1"><span class="Apple-converted-space">                </span>development: adminAddingToDevelopment,</p>
-<p class="p1"><span class="Apple-converted-space">                </span>images: ['https://placehold.co/600x338/A0C4FF/333333?text=Admin+Added'],</p>
-<p class="p1"><span class="Apple-converted-space">                </span>features: document.getElementById('admin-prop-features').value.split(',').map(f =&gt; f.trim().toLowerCase().replace(/\s+/g, '_'))</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p1"><span class="Apple-converted-space">            </span>properties.push(newProperty);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderProperties();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>closeAdminModal();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>alert('Property added successfully by admin.');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Admin Development Form</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.openDevelopmentModal = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderDevelopmentList();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>developmentModal.classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>developmentModal.classList.add('flex');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.closeDevelopmentModal = () =&gt; developmentModal.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function renderDevelopmentList() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const listEl = document.getElementById('development-list');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>listEl.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>developments.forEach(dev =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const item = document.createElement('div');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>item.className = 'flex justify-between items-center p-2 border rounded-md';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>item.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;${dev.name}&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="openAdminModal('${dev.name}')" class="bg-blue-500 text-white text-sm font-bold py-1 px-3 rounded-lg hover:bg-blue-600"&gt;Add Property&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>listEl.appendChild(item);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.adminCreateDevelopment = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const input = document.getElementById('new-development-name');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (input.value) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>developments.push({ id: developments.length + 1, name: input.value });</p>
-<p class="p1"><span class="Apple-converted-space">                </span>input.value = '';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>renderDevelopmentList();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- RENDER &amp; FILTER LOGIC ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function renderProperties() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>propertyGrid.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>let filteredProperties = properties;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (activePrimaryFilter === 'development') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (activeSecondaryFilter !== 'all') {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>filteredProperties = properties.filter(p =&gt; p.development === activeSecondaryFilter);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>filteredProperties = properties.filter(p =&gt; p.development);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else if (activePrimaryFilter !== 'all') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>filteredProperties = properties.filter(p =&gt; p.category === activePrimaryFilter);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (activeSecondaryFilter !== 'all') {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>filteredProperties = filteredProperties.filter(p =&gt; p.features.includes(activeSecondaryFilter));</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>filteredProperties.forEach(property =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const card = document.createElement('div');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>card.className = 'property-card group cursor-pointer';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>card.dataset.id = property.id;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>const imagesHtml = property.images.map((img, index) =&gt; `&lt;img src="${img}" class="absolute w-full h-full object-cover transition-opacity duration-300 ${index === 0 ? 'opacity-100' : 'opacity-0'}" alt="${property.title}"&gt;`).join('');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                 </span>card.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="relative w-full aspect-video rounded-xl overflow-hidden"&gt;${imagesHtml}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>${property.development ? `&lt;span class="absolute top-3 left-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full"&gt;${property.development}&lt;/span&gt;` : ''}</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="absolute top-3 right-3 text-white text-xl"&gt;&lt;i class="far fa-heart"&gt;&lt;/i&gt;&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-start"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-semibold truncate"&gt;${property.title}&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center space-x-1 flex-shrink-0"&gt;&lt;i class="fas fa-star text-sm"&gt;&lt;/i&gt;&lt;span&gt;${property.rating}&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-500 text-sm"&gt;${property.location}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-1"&gt;&lt;span class="font-bold"&gt;${property.price} AED&lt;/span&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>propertyGrid.appendChild(card);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function updateSecondaryFilters() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>secondaryFiltersDiv.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>activeSecondaryFilter = 'all';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>secondaryFiltersContainer.classList.remove('active');</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>let source, buildFunc;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (activePrimaryFilter === 'development') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>source = [...new Set(properties.map(p =&gt; p.development).filter(Boolean))];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>buildFunc = (name) =&gt; ({</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>icon: 'fas fa-building',</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>name: name</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else if (activePrimaryFilter !== 'all') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const relevantProperties = properties.filter(p =&gt; p.category === activePrimaryFilter);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>source = [...new Set(relevantProperties.flatMap(p =&gt; p.features))];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>buildFunc = (key) =&gt; featureDetails[key];</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return; // No secondary filters for "All"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (source.length &gt; 0) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const allButton = document.createElement('button');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>allButton.className = 'border-2 border-rose-500 bg-rose-500 text-white font-semibold py-2 px-4 rounded-full transition';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>allButton.dataset.feature = 'all';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>allButton.innerHTML = `All`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>secondaryFiltersDiv.appendChild(allButton);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>source.forEach(item =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>const details = buildFunc(item);</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>if (details) {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>const button = document.createElement('button');</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>button.className = 'border font-semibold py-2 px-4 rounded-full hover:border-gray-900 transition';</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>button.dataset.feature = item;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>button.innerHTML = `&lt;i class="${details.icon} mr-2"&gt;&lt;/i&gt;${details.name}`;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>secondaryFiltersDiv.appendChild(button);</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                </span>secondaryFiltersContainer.classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>secondaryFiltersDiv.querySelectorAll('button').forEach(button =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>button.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>activeSecondaryFilter = button.dataset.feature;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>secondaryFiltersDiv.querySelectorAll('button').forEach(btn =&gt; btn.className = 'border font-semibold py-2 px-4 rounded-full hover:border-gray-900 transition');</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>button.className = 'border-2 border-rose-500 bg-rose-500 text-white font-semibold py-2 px-4 rounded-full transition';</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>renderProperties();</p>
-<p class="p1"><span class="Apple-converted-space">                </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// --- FILE UPLOAD SIMULATION ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function setupDropZone(dropZoneId, previewContainerId, placeholderText) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const dropZone = document.getElementById(dropZoneId);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (!dropZone) return;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>dropZone.addEventListener('click', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const container = document.getElementById(previewContainerId);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const item = document.createElement('div');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>item.className = 'preview-item';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>item.innerHTML = `&lt;img src="https://placehold.co/100x100/e0e7ff/333333?text=${placeholderText}" alt="Preview"&gt;`;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (previewContainerId.includes('layout')) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>container.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(item);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function setupFileUploads() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('photo-drop-zone', 'photo-previews', 'Main');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('living-room-drop-zone', 'living-room-previews', 'Living');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('kitchen-drop-zone', 'kitchen-previews', 'Kitchen');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('bedrooms-drop-zone', 'bedrooms-previews', 'Bed');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('bathrooms-drop-zone', 'bathrooms-previews', 'Bath');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('outdoor-drop-zone', 'outdoor-previews', 'Garden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('layout-drop-zone', 'layout-previews', 'Plan');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function setupAdminFileUploads() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('admin-photo-drop-zone', 'admin-photo-previews', 'Admin');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupDropZone('admin-layout-drop-zone', 'admin-layout-previews', 'Plan');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">         </span>// --- Initial Load ---</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const isAdmin = new URLSearchParams(window.location.search).has('admin');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (isAdmin) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('admin-quick-add-btn').classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('add-development-btn').classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelector('[data-category="all"]').click();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupFileUploads();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setupAdminFileUploads();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-<p class="p2"><br></p>
-</body>
-</html>
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>A W Hunter | Abu Dhabi Luxury Properties</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="description" content="Discover luxury properties in Abu Dhabi with A W Hunter. Premium villas, penthouses, and waterfront properties in the UAE's capital.">
+            <!-- Tailwind CSS -->
+            <script src="https://cdn.tailwindcss.com"></script>
+            <!-- Font Awesome for Icons -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+            <!-- Google Fonts: Inter -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+            <style>
+                /* Custom styles to complement Tailwind */
+                body {
+                font-family: 'Inter', sans-serif;
+                }
+                .category-scroll::-webkit-scrollbar { height: 4px; }
+                .category-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+                .category-scroll::-webkit-scrollbar-thumb { background: #888; border-radius: 2px; }
+                .category-scroll::-webkit-scrollbar-thumb:hover { background: #555; }
+                .slider-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                width: 2rem;
+                height: 2rem;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                z-index: 10;
+                }
+                .property-card:hover .slider-btn { display: flex; }
+                .slider-btn.left-arrow { left: 0.5rem; }
+                .slider-btn.right-arrow { right: 0.5rem; }
+                #secondary-filters-container {
+                transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                }
+                #secondary-filters-container.active { max-height: 100px; opacity: 1; }
+                .loader {
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #db2777;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                animation: spin 1s linear infinite;
+                }
+                @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+                }
+                .progress-bar-fill { transition: width 0.3s ease-in-out; }
+                .drop-zone {
+                border: 2px dashed #ccc;
+                border-radius: 0.5rem;
+                padding: 1.5rem;
+                text-align: center;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                }
+                .drop-zone:hover { background-color: #f9fafb; }
+                .preview-container {
+                display: flex;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                }
+                .preview-item img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 0.5rem;
+                }
+            </style>
+        </head>
+        <body class="bg-gray-50 text-gray-800">
+            <!-- Header -->
+            <header class="bg-white border-b sticky top-0 z-30">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-20">
+                        <!-- Logo -->
+                        <a href="#" class="flex items-center space-x-2">
+                            <svg class="h-8 w-8 text-rose-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5-1.5-.545m0 0l-9 3.273m0 0l-9-3.273m12.75 0l-1.5-.545M12 12l-1.5.545m0 0l-3-1.091m0 0l-6 2.182" />
+                            </svg>
+                            <span class="text-2xl font-bold text-rose-500 hidden md:block">A W Hunter
+                            </a>
+                            <!-- Search Bar -->
+                            <div class="hidden sm:flex items-center border rounded-full shadow-sm hover:shadow-md transition-shadow duration-200">
+                                <button class="px-4 py-2 font-semibold border-r">Abu Dhabi</button>
+                                <button class="px-4 py-2 font-semibold border-r">Any type</button>
+                                <button class="px-4 py-2 text-gray-500">Add features</button>
+                                <button class="bg-rose-500 text-white rounded-full p-2 mx-2">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <!-- User Actions -->
+                            <div class="flex items-center space-x-2">
+                                <button id="add-development-btn" onclick="openDevelopmentModal()" class="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-gray-100 transition text-sm text-green-600">Add Development</button>
+                                <button id="admin-quick-add-btn" onclick="openAdminModal()" class="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-gray-100 transition text-sm text-blue-600">Admin Quick Add</button>
+                                <button onclick="openListPropertyModal()" class="hidden md:block font-semibold py-3 px-4 rounded-full hover:bg-gray-100 transition">List Your Property</button>
+                                <button class="flex items-center space-x-2 border rounded-full p-2 hover:shadow-md transition-shadow">
+                                    <i class="fas fa-bars"></i>
+                                    <i class="fas fa-user-circle text-gray-500 text-2xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Primary Category Filters -->
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 border-t">
+                        <div id="primary-filters" class="flex items-center space-x-6 overflow-x-auto category-scroll pb-2">
+                            <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="all">
+                                <i class="fas fa-infinity text-2xl"></i>
+                                <span class="text-xs font-semibold">All Properties
+                                </button>
+                                <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="development">
+                                    <i class="fas fa-city text-2xl"></i>
+                                    <span class="text-xs font-semibold">Developments
+                                    </button>
+                                    <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="villa">
+                                        <i class="fas fa-home text-2xl"></i>
+                                        <span class="text-xs font-semibold">Villas
+                                        </button>
+                                        <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="townhouse">
+                                            <i class="fas fa-house-user text-2xl"></i>
+                                            <span class="text-xs font-semibold">Townhouses
+                                            </button>
+                                            <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="penthouse">
+                                                <i class="fas fa-building text-2xl"></i>
+                                                <span class="text-xs font-semibold">Penthouses
+                                                </button>
+                                                <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="apartment">
+                                                    <i class="far fa-building text-2xl"></i>
+                                                    <span class="text-xs font-semibold">Apartments
+                                                    </button>
+                                                    <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="waterfront">
+                                                        <i class="fas fa-water text-2xl"></i>
+                                                        <span class="text-xs font-semibold">Waterfront
+                                                        </button>
+                                                        <button class="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 pb-2 transition-all opacity-70 hover:opacity-100 flex-shrink-0" data-category="mansion">
+                                                            <i class="fas fa-chess-rook text-2xl"></i>
+                                                            <span class="text-xs font-semibold">Mansions
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Secondary Feature Filters (Initially Hidden) -->
+                                                    <div id="secondary-filters-container" class="container mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-4">
+                                                        <div id="secondary-filters" class="flex items-center space-x-4 overflow-x-auto category-scroll pb-2">
+                                                            <!-- Feature buttons will be injected here by JS -->
+                                                        </div>
+                                                    </div>
+                                                </header>
+                                                <!-- MODALS SECTION -->
+                                                <!-- List Your Property Modal (Multi-Step) -->
+                                                <div id="list-property-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                                                    <div class="bg-white rounded-lg shadow-xl p-8 max-w-3xl w-full relative max-h-[90vh] overflow-y-auto">
+                                                        <button onclick="closeListPropertyModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                                                        <div class="mb-6">
+                                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                                <div id="progress-bar" class="bg-rose-500 h-2.5 rounded-full progress-bar-fill" style="width: 20%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Steps -->
+                                                        <div id="form-step-1" class="form-step">
+                                                            <h2 class="text-2xl font-bold mb-2">Step 1: Basic Information</h2>
+                                                            <div class="space-y-4">
+                                                                <div>
+                                                                    <label for="prop-title" class="block text-sm font-medium text-gray-700">Property Name</label>
+                                                                    <input type="text" id="prop-title" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., The Signature Villa">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="prop-type" class="block text-sm font-medium text-gray-700">Property Type</label>
+                                                                    <select id="prop-type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
+                                                                        <option>Villa</option>
+                                                                        <option>Townhouse</option>
+                                                                        <option>Penthouse</option>
+                                                                        <option>Apartment</option>
+                                                                        <option>Waterfront</option>
+                                                                        <option>Mansion</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div>
+                                                                    <label for="prop-location-select" class="block text-sm font-medium text-gray-700">Location</label>
+                                                                    <select id="prop-location-select" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
+                                                                        <option>Saadiyat Island, Abu Dhabi</option>
+                                                                        <option>Yas Island, Abu Dhabi</option>
+                                                                        <option>Al Reem Island, Abu Dhabi</option>
+                                                                        <option>Khalifa City, Abu Dhabi</option>
+                                                                        <option>Al Raha Beach, Abu Dhabi</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-step-2" class="form-step hidden">
+                                                            <h2 class="text-2xl font-bold mb-2">Step 2: Property Details</h2>
+                                                            <div class="space-y-4">
+                                                                <div>
+                                                                    <label for="prop-price" class="block text-sm font-medium text-gray-700">Price (AED)</label>
+                                                                    <input type="number" id="prop-price" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., 25000000">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="prop-features" class="block text-sm font-medium text-gray-700">Key Features (comma-separated)</label>
+                                                                    <input type="text" id="prop-features" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Private pool, sea view, home cinema, smart home">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-step-3" class="form-step hidden">
+                                                            <h2 class="text-2xl font-bold mb-2">Step 3: Description</h2>
+                                                            <div class="flex justify-between items-center">
+                                                                <label for="prop-description" class="block text-sm font-medium text-gray-700">Property Description</label>
+                                                                <button id="generate-desc-btn" onclick="generateDescription()" class="text-sm bg-rose-100 text-rose-600 font-semibold py-1 px-3 rounded-full hover:bg-rose-200 transition">
+                                                                    Generate with AI ✨
+                                                                </button>
+                                                            </div>
+                                                            <textarea id="prop-description" rows="8" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Describe the unique aspects of your property..."></textarea>
+                                                            <div id="desc-loader" class="hidden justify-center items-center py-4"><div class="loader"></div></div>
+                                                        </div>
+                                                        <div id="form-step-4" class="form-step hidden">
+                                                            <h2 class="text-2xl font-bold mb-2">Step 4: Photos & Videos</h2>
+                                                            <p class="text-gray-600 mb-6">A picture is worth a thousand words. Upload high-quality media.</p>
+                                                            <div class="space-y-6">
+                                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Main Photos</label>
+                                                                        <div id="photo-drop-zone" class="drop-zone"><i class="fas fa-camera text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="photo-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Living Room</label>
+                                                                        <div id="living-room-drop-zone" class="drop-zone"><i class="fas fa-couch text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="living-room-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Kitchen</label>
+                                                                        <div id="kitchen-drop-zone" class="drop-zone"><i class="fas fa-utensils text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="kitchen-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Bedrooms</label>
+                                                                        <div id="bedrooms-drop-zone" class="drop-zone"><i class="fas fa-bed text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="bedrooms-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Bathrooms</label>
+                                                                        <div id="bathrooms-drop-zone" class="drop-zone"><i class="fas fa-bath text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="bathrooms-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Outdoor Spaces</label>
+                                                                        <div id="outdoor-drop-zone" class="drop-zone"><i class="fas fa-tree text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="outdoor-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Floor Plan</label>
+                                                                        <div id="layout-drop-zone" class="drop-zone"><i class="fas fa-map-marked-alt text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="layout-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label for="video-link" class="block text-sm font-medium text-gray-700 mb-2">Video Tour Link</label>
+                                                                        <div class="relative">
+                                                                            <i class="fab fa-youtube absolute left-3 top-1/2 -translate-y-1/2 text-red-500"></i>
+                                                                            <input type="url" id="video-link" class="pl-9 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="https://youtube.com/watch?v=...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="form-step-5" class="form-step hidden">
+                                                            <h2 class="text-2xl font-bold mb-2">Step 5: Start Your Free Trial!</h2>
+                                                            <div class="text-center p-8 bg-gray-100 rounded-lg">
+                                                                <i class="fas fa-check-circle text-5xl text-green-500 mb-4"></i>
+                                                                <h3 class="text-xl font-semibold">Listing Complete!</h3>
+                                                                <p class="text-gray-500 mt-2">After your 7-day trial, you'll be prompted to subscribe to keep your listing active.</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Navigation -->
+                                                        <div class="flex justify-between mt-8">
+                                                            <button id="prev-btn" onclick="changeStep(-1)" class="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition hidden">Back</button>
+                                                            <button id="next-btn" onclick="changeStep(1)" class="bg-rose-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-rose-600 transition">Next</button>
+                                                            <button id="finish-btn" onclick="finishListing()" class="bg-green-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-600 transition hidden">Start Free Trial</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Admin Quick Add Modal -->
+                                                <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                                                    <div class="bg-white rounded-lg shadow-xl p-8 max-w-3xl w-full relative max-h-[90vh] overflow-y-auto">
+                                                        <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                                                        <h2 class="text-2xl font-bold mb-2">Admin: Add New Property</h2>
+                                                        <div id="admin-development-context" class="hidden text-sm text-gray-500 mb-4 p-2 bg-blue-50 rounded-md"></div>
+                                                        <div class="my-6">
+                                                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                                                <div id="admin-progress-bar" class="bg-blue-500 h-2.5 rounded-full progress-bar-fill" style="width: 20%"></div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Admin Steps -->
+                                                        <div id="admin-form-step-1" class="admin-form-step">
+                                                            <h3 class="text-xl font-semibold mb-2">Step 1: Basic Information</h3>
+                                                            <div class="space-y-4">
+                                                                <div>
+                                                                    <label for="admin-prop-title" class="block text-sm font-medium text-gray-700">Property Name</label>
+                                                                    <input type="text" id="admin-prop-title" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., The Royal Penthouse">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="admin-prop-type" class="block text-sm font-medium text-gray-700">Property Type</label>
+                                                                    <select id="admin-prop-type" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
+                                                                        <option>Villa</option>
+                                                                        <option>Townhouse</option>
+                                                                        <option>Penthouse</option>
+                                                                        <option>Apartment</option>
+                                                                        <option>Waterfront</option>
+                                                                        <option>Mansion</option>
+                                                                        <option>Commercial</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div>
+                                                                    <label for="admin-prop-location" class="block text-sm font-medium text-gray-700">Location</label>
+                                                                    <select id="admin-prop-location" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3">
+                                                                        <option>Saadiyat Island, Abu Dhabi</option>
+                                                                        <option>Yas Island, Abu Dhabi</option>
+                                                                        <option>Al Reem Island, Abu Dhabi</option>
+                                                                        <option>Khalifa City, Abu Dhabi</option>
+                                                                        <option>Al Raha Beach, Abu Dhabi</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="admin-form-step-2" class="admin-form-step hidden">
+                                                            <h3 class="text-xl font-semibold mb-2">Step 2: Property Details</h3>
+                                                            <div class="space-y-4">
+                                                                <div>
+                                                                    <label for="admin-prop-price" class="block text-sm font-medium text-gray-700">Price (AED)</label>
+                                                                    <input type="number" id="admin-prop-price" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="e.g., 25000000">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="admin-prop-features" class="block text-sm font-medium text-gray-700">Key Features (comma-separated)</label>
+                                                                    <input type="text" id="admin-prop-features" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Private pool, sea view, smart home">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="admin-form-step-3" class="admin-form-step hidden">
+                                                            <h3 class="text-xl font-semibold mb-2">Step 3: Description</h3>
+                                                            <div class="flex justify-between items-center">
+                                                                <label for="admin-prop-description" class="block text-sm font-medium text-gray-700">Property Description</label>
+                                                                <button id="admin-generate-desc-btn" onclick="adminGenerateDescription()" class="text-sm bg-blue-100 text-blue-600 font-semibold py-1 px-3 rounded-full hover:bg-blue-200 transition">
+                                                                    Generate with AI ✨
+                                                                </button>
+                                                            </div>
+                                                            <textarea id="admin-prop-description" rows="8" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="Describe the unique aspects of the property..."></textarea>
+                                                            <div id="admin-desc-loader" class="hidden justify-center items-center py-4"><div class="loader" style="border-top-color: #3b82f6;"></div></div>
+                                                        </div>
+                                                        <div id="admin-form-step-4" class="admin-form-step hidden">
+                                                            <h3 class="text-xl font-semibold mb-2">Step 4: Photos & Videos</h3>
+                                                            <div class="space-y-6">
+                                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Main Photos</label>
+                                                                        <div id="admin-photo-drop-zone" class="drop-zone"><i class="fas fa-camera text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="admin-photo-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="block text-sm font-medium text-gray-700 mb-2">Floor Plan</label>
+                                                                        <div id="admin-layout-drop-zone" class="drop-zone"><i class="fas fa-map-marked-alt text-2xl text-gray-400 mb-2"></i><p>Click to upload</p></div>
+                                                                        <div id="admin-layout-previews" class="preview-container"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <label for="admin-video-link" class="block text-sm font-medium text-gray-700 mb-2">Video Tour Link</label>
+                                                                    <div class="relative">
+                                                                        <i class="fab fa-youtube absolute left-3 top-1/2 -translate-y-1/2 text-red-500"></i>
+                                                                        <input type="url" id="admin-video-link" class="pl-9 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" placeholder="https://youtube.com/watch?v=...">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="admin-form-step-5" class="admin-form-step hidden">
+                                                            <h3 class="text-xl font-semibold mb-2">Step 5: Confirmation</h3>
+                                                            <div class="text-center p-8 bg-gray-100 rounded-lg">
+                                                                <i class="fas fa-clipboard-check text-5xl text-blue-500 mb-4"></i>
+                                                                <h3 class="text-xl font-semibold">Ready to Add</h3>
+                                                                <p class="text-gray-500 mt-2">Review the details and click below to add the property directly to the live site.</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Admin Navigation -->
+                                                        <div class="flex justify-between mt-8">
+                                                            <button id="admin-prev-btn" onclick="adminChangeStep(-1)" class="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition hidden">Back</button>
+                                                            <button id="admin-next-btn" onclick="adminChangeStep(1)" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600 transition">Next</button>
+                                                            <button id="admin-finish-btn" onclick="adminFinishListing()" class="bg-green-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-600 transition hidden">Add Property to Listing</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Development Modal -->
+                                                <div id="development-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+                                                    <!-- ... unchanged ... -->
+                                                </div>
+                                                <p class="p2"> <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                                                    <div id="property-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
+                                                        <!-- Property cards will be rendered here -->
+                                                    </div>
+                                                </main>
+                                                <script>
+                                                    // --- DATA (Simulating a database) ---
+                                                    let developments = [
+                                                    { id: 1, name: 'Saadiyat Grove' },
+                                                    { id: 2, name: 'Yas Acres North' },
+                                                    { id: 3, name: 'Ramhan Island Villas' }
+                                                    ];
+                                                    let properties = [
+                                                    { id: 1, title: 'Saadiyat Beach Signature Villa', location: 'Saadiyat Island, Abu Dhabi', price: '25,000,000', rating: 4.98, category: 'villa', development: 'Saadiyat Grove', images: ['https://placehold.co/600x338/A8D5BA/333333?text=Villa+View', 'https://placehold.co/600x338/BFD8B8/333333?text=Pool'], features: ['private_pool', 'sea_view', 'maids_room'] },
+                                                    { id: 2, title: 'Skyline Penthouse, The Gate Tower', location: 'Al Reem Island, Abu Dhabi', price: '18,500,000', rating: 4.95, category: 'penthouse', development: null, images: ['https://placehold.co/600x338/81C7D4/FFFFFF?text=Penthouse+View'], features: ['sea_view', 'smart_home', 'gym'] },
+                                                    { id: 3, title: 'Yas Acres Waterfront Villa', location: 'Yas Island, Abu Dhabi', price: '9,800,000', rating: 4.88, category: 'waterfront', development: 'Yas Acres North', images: ['https://placehold.co/600x338/FFDDC1/333333?text=Waterfront+Property'], features: ['private_pool', 'sea_view', 'gym'] },
+                                                    { id: 4, title: 'Grove Museum Views Apartments', location: 'Saadiyat Island, Abu Dhabi', price: '7,200,000', rating: 4.92, category: 'apartment', development: 'Saadiyat Grove', images: ['https://placehold.co/600x338/C1A87C/FFFFFF?text=Apartment+Balcony'], features: ['sea_view', 'gym'] },
+                                                    { id: 7, title: 'Leafy Lane Townhouse', location: 'Yas Island, Abu Dhabi', price: '4,500,000', rating: 4.80, category: 'townhouse', development: 'Yas Acres North', images: ['https://placehold.co/600x338/fca5a5/FFFFFF?text=Townhouse+Exterior'], features: ['gym', 'private_pool'] },
+                                                    { id: 8, title: 'Zenith Tower Residence', location: 'Al Reem Island, Abu Dhabi', price: '2,100,000', rating: 4.75, category: 'apartment', development: null, images: ['https://placehold.co/600x338/a5b4fc/FFFFFF?text=Modern+Apartment'], features: ['gym'] },
+                                                    { id: 9, title: 'Exclusive Ramhan Island Villa', location: 'Saadiyat Island, Abu Dhabi', price: '35,000,000', rating: 5.0, category: 'villa', development: 'Ramhan Island Villas', images: ['https://placehold.co/600x338/6ee7b7/333333?text=Ramhan+Island'], features: ['private_pool', 'sea_view', 'smart_home'] },
+                                                    { id: 10, title: 'Saadiyat Cultural District Townhouse', location: 'Saadiyat Island, Abu Dhabi', price: '6,800,000', rating: 4.91, category: 'townhouse', development: 'Saadiyat Grove', images: ['https://placehold.co/600x338/fde68a/333333?text=Cultural+Townhouse'], features: ['maids_room', 'gym'] },
+                                                    { id: 11, title: 'Premium Office Space', location: 'Al Maryah Island, Abu Dhabi', price: '12,500,000', rating: 4.95, category: 'commercial', development: null, images: ['https://placehold.co/600x338/d1d5db/333333?text=Office+Space'], features: ['sea_view'] },
+                                                    ];
+                                                    const featureDetails = {
+                                                    'private_pool': { icon: 'fas fa-swimming-pool', name: 'Private Pool' },
+                                                    'sea_view': { icon: 'fas fa-water', name: 'Sea View' },
+                                                    'maids_room': { icon: 'fas fa-concierge-bell', name: `Maid's Room` },
+                                                    'smart_home': { icon: 'fas fa-robot', name: 'Smart Home' },
+                                                    'gym': { icon: 'fas fa-dumbbell', name: 'Gym' },
+                                                    };
+                                                    // --- State ---
+                                                    let userFormCurrentStep = 1;
+                                                    let adminFormCurrentStep = 1;
+                                                    let activePrimaryFilter = 'all';
+                                                    let activeSecondaryFilter = 'all';
+                                                    let adminAddingToDevelopment = null;
+                                                    const apiKey = "";
+                                                    // --- DOM Elements ---
+                                                    const propertyGrid = document.getElementById('property-grid');
+                                                    const primaryCategoryButtons = document.querySelectorAll('#primary-filters button');
+                                                    const secondaryFiltersContainer = document.getElementById('secondary-filters-container');
+                                                    const secondaryFiltersDiv = document.getElementById('secondary-filters');
+                                                    const listPropertyModal = document.getElementById('list-property-modal');
+                                                    const adminModal = document.getElementById('admin-modal');
+                                                    const developmentModal = document.getElementById('development-modal');
+                                                    // --- MODAL & FORM LOGIC ---
+                                                    // User Listing Form
+                                                    window.openListPropertyModal = () => { userFormCurrentStep = 1; updateUserFormStep(); listPropertyModal.classList.remove('hidden'); listPropertyModal.classList.add('flex'); };
+                                                    window.closeListPropertyModal = () => listPropertyModal.classList.add('hidden');
+                                                    function updateUserFormStep() {
+                                                    document.querySelectorAll('.form-step').forEach(step => step.classList.add('hidden'));
+                                                    document.getElementById(`form-step-${userFormCurrentStep}`).classList.remove('hidden');
+                                                    document.getElementById('progress-bar').style.width = `${(userFormCurrentStep / 5) * 100}%`;
+                                                    document.getElementById('prev-btn').classList.toggle('hidden', userFormCurrentStep === 1);
+                                                    document.getElementById('next-btn').classList.toggle('hidden', userFormCurrentStep === 5);
+                                                    document.getElementById('finish-btn').classList.toggle('hidden', userFormCurrentStep !== 5);
+                                                    }
+                                                    window.changeStep = (direction) => { userFormCurrentStep += direction; updateUserFormStep(); };
+                                                    window.finishListing = () => {
+                                                    const newProperty = {
+                                                    id: properties.length + 1,
+                                                    title: document.getElementById('prop-title').value,
+                                                    location: document.getElementById('prop-location-select').value,
+                                                    price: document.getElementById('prop-price').value,
+                                                    rating: 'New',
+                                                    category: document.getElementById('prop-type').value.toLowerCase(),
+                                                    images: ['https://placehold.co/600x338/cccccc/333333?text=New+Listing'],
+                                                    features: document.getElementById('prop-features').value.split(',').map(f => f.trim().toLowerCase().replace(/\s+/g, '_'))
+                                                    };
+                                                    properties.push(newProperty);
+                                                    renderProperties();
+                                                    listPropertyModal.classList.add('hidden');
+                                                    alert('Congratulations! Your property is now live for a 7-day trial.');
+                                                    };
+                                                    // Admin Property Form
+                                                    window.openAdminModal = (developmentContext = null) => {
+                                                    adminFormCurrentStep = 1;
+                                                    adminAddingToDevelopment = developmentContext;
+                                                    const contextDiv = document.getElementById('admin-development-context');
+                                                    if (developmentContext) {
+                                                    contextDiv.textContent = `Adding property to: ${developmentContext}`;
+                                                    contextDiv.classList.remove('hidden');
+                                                    } else {
+                                                    contextDiv.classList.add('hidden');
+                                                    }
+                                                    updateAdminFormStep();
+                                                    adminModal.classList.remove('hidden');
+                                                    adminModal.classList.add('flex');
+                                                    };
+                                                    window.closeAdminModal = () => adminModal.classList.add('hidden');
+                                                    function updateAdminFormStep() {
+                                                    document.querySelectorAll('.admin-form-step').forEach(step => step.classList.add('hidden'));
+                                                    document.getElementById(`admin-form-step-${adminFormCurrentStep}`).classList.remove('hidden');
+                                                    document.getElementById('admin-progress-bar').style.width = `${(adminFormCurrentStep / 5) * 100}%`;
+                                                    document.getElementById('admin-prev-btn').classList.toggle('hidden', adminFormCurrentStep === 1);
+                                                    document.getElementById('admin-next-btn').classList.toggle('hidden', adminFormCurrentStep === 5);
+                                                    document.getElementById('admin-finish-btn').classList.toggle('hidden', adminFormCurrentStep !== 5);
+                                                    }
+                                                    window.adminChangeStep = (direction) => { adminFormCurrentStep += direction; updateAdminFormStep(); };
+                                                    window.adminFinishListing = () => {
+                                                    const newProperty = {
+                                                    id: properties.length + 1,
+                                                    title: document.getElementById('admin-prop-title').value,
+                                                    location: document.getElementById('admin-prop-location').value,
+                                                    price: document.getElementById('admin-prop-price').value,
+                                                    rating: 'Admin',
+                                                    category: document.getElementById('admin-prop-type').value.toLowerCase(),
+                                                    development: adminAddingToDevelopment,
+                                                    images: ['https://placehold.co/600x338/A0C4FF/333333?text=Admin+Added'],
+                                                    features: document.getElementById('admin-prop-features').value.split(',').map(f => f.trim().toLowerCase().replace(/\s+/g, '_'))
+                                                    };
+                                                    properties.push(newProperty);
+                                                    renderProperties();
+                                                    closeAdminModal();
+                                                    alert('Property added successfully by admin.');
+                                                    };
+                                                    // Admin Development Form
+                                                    window.openDevelopmentModal = () => {
+                                                    renderDevelopmentList();
+                                                    developmentModal.classList.remove('hidden');
+                                                    developmentModal.classList.add('flex');
+                                                    };
+                                                    window.closeDevelopmentModal = () => developmentModal.classList.add('hidden');
+                                                    function renderDevelopmentList() {
+                                                    const listEl = document.getElementById('development-list');
+                                                    listEl.innerHTML = '';
+                                                    developments.forEach(dev => {
+                                                    const item = document.createElement('div');
+                                                    item.className = 'flex justify-between items-center p-2 border rounded-md';
+                                                    item.innerHTML = `
+                                                    <span>${dev.name}
+                                                        <button onclick="openAdminModal('${dev.name}')" class="bg-blue-500 text-white text-sm font-bold py-1 px-3 rounded-lg hover:bg-blue-600">Add Property</button>
+                                                        `;
+                                                        listEl.appendChild(item);
+                                                        });
+                                                        }
+                                                        window.adminCreateDevelopment = () => {
+                                                        const input = document.getElementById('new-development-name');
+                                                        if (input.value) {
+                                                        developments.push({ id: developments.length + 1, name: input.value });
+                                                        input.value = '';
+                                                        renderDevelopmentList();
+                                                        }
+                                                        };
+                                                        // --- RENDER & FILTER LOGIC ---
+                                                        function renderProperties() {
+                                                        propertyGrid.innerHTML = '';
+                                                        let filteredProperties = properties;
+                                                        if (activePrimaryFilter === 'development') {
+                                                        if (activeSecondaryFilter !== 'all') {
+                                                        filteredProperties = properties.filter(p => p.development === activeSecondaryFilter);
+                                                        } else {
+                                                        filteredProperties = properties.filter(p => p.development);
+                                                        }
+                                                        } else if (activePrimaryFilter !== 'all') {
+                                                        filteredProperties = properties.filter(p => p.category === activePrimaryFilter);
+                                                        if (activeSecondaryFilter !== 'all') {
+                                                        filteredProperties = filteredProperties.filter(p => p.features.includes(activeSecondaryFilter));
+                                                        }
+                                                        }
+                                                        filteredProperties.forEach(property => {
+                                                        const card = document.createElement('div');
+                                                        card.className = 'property-card group cursor-pointer';
+                                                        card.dataset.id = property.id;
+                                                        const imagesHtml = property.images.map((img, index) => `<img src="${img}" class="absolute w-full h-full object-cover transition-opacity duration-300 ${index === 0 ? 'opacity-100' : 'opacity-0'}" alt="${property.title}">`).join('');
+                                                        card.innerHTML = `
+                                                        <div class="relative">
+                                                            <div class="relative w-full aspect-video rounded-xl overflow-hidden">${imagesHtml}</div>
+                                                            ${property.development ? `<span class="absolute top-3 left-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full">${property.development}` : ''}
+                                                            <button class="absolute top-3 right-3 text-white text-xl"><i class="far fa-heart"></i></button>
+                                                        </div>
+                                                        <div class="mt-2">
+                                                            <div class="flex justify-between items-start">
+                                                                <h3 class="font-semibold truncate">${property.title}</h3>
+                                                                <div class="flex items-center space-x-1 flex-shrink-0"><i class="fas fa-star text-sm"></i><span>${property.rating}</div>
+                                                            </div>
+                                                            <p class="text-gray-500 text-sm">${property.location}</p>
+                                                            <p class="mt-1"><span class="font-bold">${property.price} AED</p>
+                                                        </div>
+                                                        `;
+                                                        propertyGrid.appendChild(card);
+                                                        });
+                                                        }
+                                                        function updateSecondaryFilters() {
+                                                        secondaryFiltersDiv.innerHTML = '';
+                                                        activeSecondaryFilter = 'all';
+                                                        secondaryFiltersContainer.classList.remove('active');
+                                                        let source, buildFunc;
+                                                        if (activePrimaryFilter === 'development') {
+                                                        source = [...new Set(properties.map(p => p.development).filter(Boolean))];
+                                                        buildFunc = (name) => ({
+                                                        icon: 'fas fa-building',
+                                                        name: name
+                                                        });
+                                                        } else if (activePrimaryFilter !== 'all') {
+                                                        const relevantProperties = properties.filter(p => p.category === activePrimaryFilter);
+                                                        source = [...new Set(relevantProperties.flatMap(p => p.features))];
+                                                        buildFunc = (key) => featureDetails[key];
+                                                        } else {
+                                                        return; // No secondary filters for "All"
+                                                        }
+                                                        if (source.length > 0) {
+                                                        const allButton = document.createElement('button');
+                                                        allButton.className = 'border-2 border-rose-500 bg-rose-500 text-white font-semibold py-2 px-4 rounded-full transition';
+                                                        allButton.dataset.feature = 'all';
+                                                        allButton.innerHTML = `All`;
+                                                        secondaryFiltersDiv.appendChild(allButton);
+                                                        source.forEach(item => {
+                                                        const details = buildFunc(item);
+                                                        if (details) {
+                                                        const button = document.createElement('button');
+                                                        button.className = 'border font-semibold py-2 px-4 rounded-full hover:border-gray-900 transition';
+                                                        button.dataset.feature = item;
+                                                        button.innerHTML = `<i class="${details.icon} mr-2"></i>${details.name}`;
+                                                        secondaryFiltersDiv.appendChild(button);
+                                                        }
+                                                        });
+                                                        secondaryFiltersContainer.classList.add('active');
+                                                        }
+                                                        secondaryFiltersDiv.querySelectorAll('button').forEach(button => {
+                                                        button.addEventListener('click', () => {
+                                                        activeSecondaryFilter = button.dataset.feature;
+                                                        secondaryFiltersDiv.querySelectorAll('button').forEach(btn => btn.className = 'border font-semibold py-2 px-4 rounded-full hover:border-gray-900 transition');
+                                                        button.className = 'border-2 border-rose-500 bg-rose-500 text-white font-semibold py-2 px-4 rounded-full transition';
+                                                        renderProperties();
+                                                        });
+                                                        });
+                                                        }
+                                                        // --- FILE UPLOAD SIMULATION ---
+                                                        function setupDropZone(dropZoneId, previewContainerId, placeholderText) {
+                                                        const dropZone = document.getElementById(dropZoneId);
+                                                        if (!dropZone) return;
+                                                        dropZone.addEventListener('click', () => {
+                                                        const container = document.getElementById(previewContainerId);
+                                                        const item = document.createElement('div');
+                                                        item.className = 'preview-item';
+                                                        item.innerHTML = `<img src="https://placehold.co/100x100/e0e7ff/333333?text=${placeholderText}" alt="Preview">`;
+                                                        if (previewContainerId.includes('layout')) {
+                                                        container.innerHTML = '';
+                                                        }
+                                                        container.appendChild(item);
+                                                        });
+                                                        }
+                                                        function setupFileUploads() {
+                                                        setupDropZone('photo-drop-zone', 'photo-previews', 'Main');
+                                                        setupDropZone('living-room-drop-zone', 'living-room-previews', 'Living');
+                                                        setupDropZone('kitchen-drop-zone', 'kitchen-previews', 'Kitchen');
+                                                        setupDropZone('bedrooms-drop-zone', 'bedrooms-previews', 'Bed');
+                                                        setupDropZone('bathrooms-drop-zone', 'bathrooms-previews', 'Bath');
+                                                        setupDropZone('outdoor-drop-zone', 'outdoor-previews', 'Garden');
+                                                        setupDropZone('layout-drop-zone', 'layout-previews', 'Plan');
+                                                        }
+                                                        function setupAdminFileUploads() {
+                                                        setupDropZone('admin-photo-drop-zone', 'admin-photo-previews', 'Admin');
+                                                        setupDropZone('admin-layout-drop-zone', 'admin-layout-previews', 'Plan');
+                                                        }
+                                                        // --- Initial Load ---
+                                                        document.addEventListener('DOMContentLoaded', () => {
+                                                        const isAdmin = new URLSearchParams(window.location.search).has('admin');
+                                                        if (isAdmin) {
+                                                        document.getElementById('admin-quick-add-btn').classList.remove('hidden');
+                                                        document.getElementById('add-development-btn').classList.remove('hidden');
+                                                        }
+                                                        document.querySelector('[data-category="all"]').click();
+                                                        setupFileUploads();
+                                                        setupAdminFileUploads();
+                                                        });
+                                                    </script>
+                                                </body>
+                                            </html>
